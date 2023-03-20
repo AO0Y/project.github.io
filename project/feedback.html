@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="feedback.css">
+    <script src="feedback.js"></script>
+  <!-- <link rel="stylesheet" href="test.css"> -->
+</head>
+
+  </head>
+  <body>
+    <!-- <script type="text/javascript" src="test.js"></script> -->
+    <h2>Feedback Form</h2>
+    <form id="feedbackForm">
+
+      <main class="Feedback">
+
+        <form id="contactForm" onsubmit="feedbackFormValidate()">
+          <table>
+            <tr>
+            <tr>
+              <td>First Name:</td>
+              <td><input type="text" name="firstName" size="40"></td>
+            </tr>
+            <tr>
+              <td>Last Name:</td>
+              <td><input type="text" name="lastName" size="40"></td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><input type="text" name="email" size="40"></td>
+            </tr>
+            <tr>
+              <td>Subject:</td>
+              <td><input type="text" name="subject" size="40"></td>
+            </tr>
+            <tr>
+              <td>Message:</td>
+              <td><textarea name="message" rows="3" cols="33">
+              </textarea></td>
+            </tr>
+            
+          </table>
+        </form>
+      </main>
+      <p>Rate:</p>
+      <label><input type="radio" name="rating" value="1">1 star</label>
+      <label><input type="radio" name="rating" value="2">2 stars</label>
+      <label><input type="radio" name="rating" value="3">3 stars</label>
+      <label><input type="radio" name="rating" value="4">4 stars</label>
+      <label><input type="radio" name="rating" value="5">5 stars</label>
+      <br />
+      <tr>
+        <td><input type="submit" value="Send Feedback"></td>
+        <td><input type="reset" value="Reset Form"></td>
+      </tr>
+    </form>
+    
+    <script>
+      const feedbackForm = document.querySelector('#feedbackForm');
+      feedbackForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const message = feedbackForm.elements.message.value;
+        const rating = feedbackForm.elements.rating.value;
+        const email = feedbackForm.elements.email.value;
+
+        const words = message.trim().split(/\s+/).length;
+        
+        
+        let feedbackMessage = `Number of words entered: ${words}\n`;
+        if (!isValidEmail) {
+          feedbackMessage += "Invalid email format.\n";
+        }
+        feedbackMessage += `Rating: ${rating} stars`;
+        
+        alert(feedbackMessage);
+      });
+    </script>
+  </body>
+</html>
